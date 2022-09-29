@@ -1,0 +1,14 @@
+version: '3'
+services:
+  node1:
+    image: nicopaez/password-api
+  node2:
+    image: nicopaez/password-api
+  balanceador:
+      build:
+        context: ./nginx
+      ports:
+        - "80:80"
+      depends_on:
+          - node1
+          - node2
